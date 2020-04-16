@@ -21,12 +21,31 @@
     </item>
     
     <item>
+      <title>Memory Usage</title>
+      <link>/memory-usage/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/memory-usage/</guid>
+      <description>&lt;p&gt;This article offers a basic introduction of gtest.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>About</title>
       <link>/about/</link>
       <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
       <description>This blog is about the technique introduction of myvideoyun.com.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/memory.usage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/memory.usage/</guid>
+      <description>Collect Memory Usage of C/C++ executables on Ubuntu Concepts  Heap: Stack RSS: Resident Set Size: the size of memory which are in RAM. It does not include memory which is swapped out. VSZ: Virtual memory size;  Tools Top The top program provides a dynamic real-time view of a running system. It can display system summary information as well as a list of processes or threads currently being managed by the Linux kernel.
+It can display following fields: - %CPU: Cpu usage - %MEM: Memory Usage (RES), share of available phisical memory, its non-swapped phisical memory a task is using. - %DATA: Data + Stack Size (KiB), Data Resident Set size or DRS - SHR: Shared Meomory Size: The amount of shared memory available to a task, not all of which is typically resident. It simply reflects memory that could be potentially shared with other processes. - SWAP: Swapped Size: The non-resident portion of a task&amp;rsquo;s address space.</description>
     </item>
     
   </channel>

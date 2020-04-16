@@ -3,7 +3,7 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
-    <title>Gtest Guide - Myvideoyun&#39;s BLOG</title>
+    <title>Memory Usage - Myvideoyun&#39;s BLOG</title>
 
     <style type="text/css">
         img.wp-smiley,
@@ -55,7 +55,7 @@
 <main role="main">
     <article role="article" class="post type-post format-standard hentry">
         <header class="post-header">
-            <h1>Gtest Guide</h1>
+            <h1>Memory Usage</h1>
             <div class="post-details">
                 <a rel="bookmark">
                     <time datetime="2019-03-11T311:120:06">2019-03-11</time>
@@ -66,11 +66,11 @@
     
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
     
-    <div class="fb-share-button" data-href="/gtest-guide/" data-layout="button_count" data-size="small">
-        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=%2fgtest-guide%2f" class="fb-xfbml-parse-ignore">Share</a>
+    <div class="fb-share-button" data-href="/memory-usage/" data-layout="button_count" data-size="small">
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=%2fmemory-usage%2f" class="fb-xfbml-parse-ignore">Share</a>
     </div>
     &nbsp;
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Gtest Guide" data-url="/gtest-guide/" data-show-count="false">Tweet</a>
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Memory Usage" data-url="/memory-usage/" data-show-count="false">Tweet</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     &nbsp;
     
@@ -82,88 +82,35 @@
         <div class="post-content">
             <p>This article offers a basic introduction of gtest.</p>
 
-<h1 id="gtest">gtest</h1>
+<h1 id="collect-memory-usage-of-c-c-executables-on-ubuntu">Collect Memory Usage of C/C++ executables on Ubuntu</h1>
 
-<p>gtest is a unit test framework for C++, which is developed by google. It&rsquo;s very popular in open source community. <a href="https://github.com/google/googletest">Google Test</a>.</p>
-
-<h2 id="get-started">Get started</h2>
-
-<ol>
-<li><p>git clone gtest into your directory
-<code>git clone https://github.com/google/googletest.git</code></p></li>
-
-<li><p>Create CMakeLists.txt to compile your test case</p>
-
-<pre><code>add_subdirectory(googletest) // compile googletest, will produce libgtest.a
-include_directories(googletest/include) // add googletest into header files search path
-link_directories(googletest) // add google test into lib search path
-target_link_libraries(av1test gtest SvtAv1Enc) // link gtest libs
-</code></pre></li>
-
-<li><p>Create your test case</p>
-
-<pre><code>#include &quot;gtest/gtest.h&quot;
-int sum(int a, int b){
-return a + b;
-}
-TEST(SumTest, add){
-EXPECT_EQ(3, sum(1, 2));
-}
-
-int main(int argc, char **argv){
-::testing::InitGoogleTest(&amp;argc, argv);
-return RUN_ALL_TESTS()
-}
-</code></pre></li>
-
-<li><p>compile and run the task</p></li>
-</ol>
-
-<h2 id="advanced-topics">Advanced Topics</h2>
-
-<h3 id="explicit-success-and-failure">Explicit Success and Failure</h3>
+<h2 id="concepts">Concepts</h2>
 
 <ul>
-<li>SUCCEED()</li>
-<li>FAIL(): can only be used in function that return void.</li>
-
-<li><h3 id="exception-assertions">Exception Assertions</h3>
-
-<p>Vefifying that a piece of code throws(or does not throw) an exception of the given type</p></li>
+<li>Heap:</li>
+<li>Stack</li>
+<li>RSS: Resident Set Size: the size of memory which are in RAM. It does not include memory which is swapped out.</li>
+<li>VSZ: Virtual memory size;</li>
 </ul>
 
-<h3 id="predicate-assertions-for-better-err">Predicate Assertions for Better Err</h3>
+<h2 id="tools">Tools</h2>
 
-<h3 id="floating-point-comparision">Floating-Point Comparision</h3>
+<h3 id="top">Top</h3>
 
-<ol>
-<li>Units in the Last Place</li>
-<li>ASSERT_FLOAT_EQ(val1, val2)</li>
-</ol>
+<p>The  top  program  provides  a dynamic real-time view of a running system. It can display system summary information as well as a list  of  processes  or  threads  currently being managed by the Linux kernel.</p>
 
-<h3 id="asserting-using-gmock">Asserting Using gMock</h3>
+<p>It can display following fields:
+- %CPU: Cpu usage
+- %MEM: Memory Usage (RES), share of available phisical memory, its non-swapped phisical memory a task is using.
+- %DATA: Data + Stack Size (KiB), Data Resident Set size or DRS
+- SHR: Shared Meomory Size: The amount of shared memory available to a task, not all of which is typically resident. It simply reflects memory that  could  be  potentially  shared  with  other processes.
+- SWAP: Swapped Size: The non-resident portion of a task&rsquo;s address space.
+- VIRT: Virtual Memory Size, The  total  amount of virtual memory used by the task.  It includes all code, data and shared libraries plus pages that have been swapped out and pages that have been mapped but not used.
+- nTH: Number of Threads: The number of threads associated with a process.</p>
 
-<h3 id="more-string-assertions">More String Assertions</h3>
+<h3 id="time">Time</h3>
 
-<ol>
-<li>using gMock EXPECT_THAT() or ASSERT_THAT()</li>
-</ol>
-
-<h3 id="type-assertions">Type Assertions</h3>
-
-<pre><code>to assert that types T1 and T2 are the same. ::::testing::StaticAssertTypeEq&lt;T1, T2&gt;();
-</code></pre>
-
-<h3 id="assertion-placement">Assertion Placement</h3>
-
-<h3 id="teaching-googletest-how-to-print-your-values">Teaching googletest How to Print Your Values</h3>
-
-<h3 id="death-test">Death Test</h3>
-
-<pre><code> Any test that checks that a program terminates (except by throwing an exception) in an expected fashion is also a death test. ASSERT_DEATH, ASSERT_DEATH_IF_SUPPORTED
-</code></pre>
-
-<h3 id="value-parameterized-tests">Value-Parameterized Tests</h3>
+<p>/usr/bin/time, it will give the summary of the memory usage.</p>
         </div>
 
         <footer class="post-footer">
@@ -178,7 +125,7 @@ return RUN_ALL_TESTS()
             
             <span class="post-tags">
                 
-                <a href="/tags/gtest" rel="tag">gtest</a>&emsp;
+                <a href="/tags/memory" rel="tag">memory</a>&emsp;
                 
             </span>
             
@@ -204,10 +151,10 @@ return RUN_ALL_TESTS()
         <div class="nav-links">
             <div class="nav-previous">
                 
-                <a class="previous" href="/memory-usage/"> Memory Usage</a>
-                
             </div>
             <div class="nav-next">
+                
+                <a class="next" href="/gtest-guide/"> Gtest Guide</a>
                 
             </div>
         </div>
