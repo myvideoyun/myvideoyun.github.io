@@ -1,6 +1,4 @@
-# TinyGiftRenderer
-
-  迷你礼物渲染库功能强大，全面兼容安卓IOS，使用简单；
+# 迷你礼物渲染库
 
 ## 功能
 
@@ -21,6 +19,11 @@
 1. 秀场直播
 2. K歌
 3. 短视频
+
+## 免费试用
+
+1. [Android Demo](https://github.com/myvideoyun/TinyGiftRendererAndroid)
+2. [IOS Demo](https://github.com/myvideoyun/TinyGiftRendererIOS)
 
 ## 商务合作
 联系人：范经理  
