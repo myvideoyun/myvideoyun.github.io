@@ -29,6 +29,6 @@ Large gifts in live-broadcasting usually take a lot of bandwidth and space, mean
 
 ## Contact
 
-contact: Mr Fan
-mail: marketing@myvideoyun.com
-tel: +8613818445512
+contact: Mr Fan  
+mail: marketing@myvideoyun.com  
+tel: +8613818445512  
